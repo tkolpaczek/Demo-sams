@@ -1,0 +1,58 @@
+---
+import '@fontsource/comfortaa/400.css';
+import '@fontsource/comfortaa/500.css';
+import '@fontsource/comfortaa/700.css';
+import '@fontsource/cormorant-garamond/300.css';
+import '@fontsource/cormorant-garamond/400.css';
+import '@fontsource/cormorant-garamond/300-italic.css';
+import '@fontsource/cormorant-garamond/400-italic.css';
+import '@fontsource/jost/300.css';
+import '@fontsource/jost/400.css';
+import '@fontsource/jost/500.css';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={`${base}images/hero.jpg`} />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Barbershop',
+      name: "Sam's Barbers",
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '7 Hare Lane',
+        addressLocality: 'Gloucester',
+        postalCode: 'GL1 2BA',
+        addressCountry: 'GB',
+      },
+      telephone: '+447413183819',
+      openingHours: ['Mo-Sa 09:00-18:00', 'Su 09:30-15:00'],
+    })} />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,257 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const img = (name: string) => `${base}images/${name}`;
+
+const services = [
+  { name: 'Gents’ Haircut', time: '30 — 45 min', price: '£13', preview: 'craft-detail.jpg' },
+  { name: 'Skin Fade', time: '30 — 45 min', price: '£15', preview: 'craft-fade.jpg' },
+  { name: 'Haircut & Beard', time: '45 — 60 min', price: '£18', preview: 'hero.jpg' },
+  { name: 'Beard Trim', time: '15 — 30 min', price: '£8', preview: 'tools.jpg' },
+  { name: 'Traditional Wet Shave', time: '30 min', price: '£12', preview: 'clippers.jpg' },
+  { name: 'Kids’ Haircut', time: '30 min', price: '£10', preview: 'craft-style.jpg' },
+  { name: 'OAP Haircut', time: '30 min', price: '£9', preview: 'chair.jpg' },
+];
+
+const voices = [
+  { quote: 'Twice now I have had my hair cut here and it’s the <em>BEST haircut I have ever had.</em> I travel from Malvern to Gloucester for my monthly crop.', source: 'James Murphy — Facebook' },
+  { quote: 'Superb haircut, <em>wouldn’t go anywhere else.</em> Always friendly and professional.', source: 'Andy Woodward — Facebook' },
+  { quote: 'Both my boys love going to Sam’s for their haircuts — always welcoming and <em>fab service.</em>', source: 'Becky Brown — Facebook' },
+  { quote: 'Great haircut, reasonably priced. Go and give it a try — <em>you won’t be disappointed!</em>', source: 'Garry Pearcey — Facebook' },
+  { quote: 'Been going here for a few years now, <em>never disappointed.</em> Friendly and welcoming staff.', source: 'Ken Watt — Facebook' },
+  { quote: '<em>Best barber shop in Gloucester.</em>', source: 'Hamid Nori — Facebook' },
+];
+---
+
+<Layout
+  title="Sam's Barbers — Hair · Beard · Grooming | Hare Lane, Gloucester"
+  description="A proper barbershop in the heart of Gloucester. Sharp cuts, skin fades and beard work at 7 Hare Lane, GL1 2BA. Walk-ins welcome, seven days a week."
+>
+  <!-- NAV -->
+  <header class="nav">
+    <a class="nav__brand" href={base} data-cursor>Sam’s Barbers</a>
+    <nav class="nav__meta">
+      <a class="nav__link" href="#craft" data-cursor>The Shop</a>
+      <a class="nav__link" href="#menu" data-cursor>The Menu</a>
+      <a class="nav__link" href="#visit" data-cursor>Visit</a>
+      <a class="nav__link nav__link--cta" href="tel:+447413183819" data-cursor>Call — 07413 183819</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero__media" data-hero-media>
+        <img src={img('hero.jpg')} alt="A straight-razor shave under low light" loading="eager" />
+      </div>
+      <div class="hero__scrim"></div>
+      <div class="hero__content" data-hero-content>
+        <div class="hero__eyebrow" data-hero-line>
+          <span class="rule"></span>
+          <span class="label">Hare Lane · Gloucester GL1</span>
+        </div>
+        <h1 class="hero__title display">
+          <span class="line"><span data-hero-title>Sam’s</span></span>
+          <span class="line indent"><span data-hero-title><em>Barbers</em></span></span>
+        </h1>
+        <div class="hero__foot" data-hero-line>
+          <p>Hair · Beard · Grooming — in the heart of the city</p>
+          <div class="scroll-cue">
+            <span>Scroll</span>
+            <span class="scroll-cue__track"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__inner" data-marquee>
+        {Array.from({ length: 4 }).map(() => (
+          <span>Hair <i>·</i> Beard <i>·</i> Grooming <i>·</i> Walk-ins welcome <i>·</i></span>
+        ))}
+      </div>
+    </div>
+
+    <!-- MANIFESTO -->
+    <section class="section manifesto">
+      <p class="label label--dim" data-fade>The house philosophy</p>
+      <h2 class="manifesto__text" data-words style="margin-top:2.2rem">
+        A proper barbershop. No fuss, no gimmicks — <span class="accent">just sharp cuts,</span>
+        steady hands and a <span class="accent">warm welcome.</span>
+      </h2>
+      <div class="manifesto__meta">
+        <div data-fade>
+          <div class="num">7<span class="serif-i">/</span>7</div>
+          <p>Open every day of the week. No appointment needed — walk in, sit down.</p>
+        </div>
+        <div data-fade>
+          <div class="num">N<span class="serif-i">o.</span>7</div>
+          <p>Hare Lane, Gloucester city centre — under the barber’s pole.</p>
+        </div>
+        <div data-fade>
+          <div class="num">100<span class="serif-i">yrs</span></div>
+          <p>Hair has been cut at this shop for over a century — ask about the photo on the wall.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CRAFT -->
+    <section class="section craft" id="craft">
+      <div class="section-head">
+        <h2>The Shop</h2>
+        <span class="label label--dim">01 — Craft</span>
+      </div>
+      <div class="craft__grid">
+        <div class="craft__img craft__img--a" data-reveal-img data-parallax="-6">
+          <img src={img('shopfront.jpg')} alt="The blue shopfront of Sam's Barbers on Hare Lane, Gloucester, with its barber's pole" loading="lazy" />
+        </div>
+        <div class="craft__img craft__img--b" data-reveal-img data-parallax="8">
+          <img src={img('craft-style.jpg')} alt="A barber shaping a client's hair with scissors" loading="lazy" />
+        </div>
+        <div class="craft__img craft__img--c" data-reveal-img data-parallax="-10">
+          <img src={img('tools.jpg')} alt="Straight razors, pomade and brushes on the counter" loading="lazy" />
+        </div>
+        <div class="craft__caption">
+          <span class="label">Hare Lane, under the pole</span>
+          <h3>One little blue shop, <span class="serif-i">one standard.</span></h3>
+          <p data-fade>
+            Sam and the team work clippers, scissors and cut-throat razors with the
+            kind of attention to detail that keeps regulars coming back — some from
+            as far as Malvern. A relaxed, family-friendly chair in the middle of
+            Gloucester, patient with the youngest heads and true to the oldest —
+            in a shop where hair has been cut for over a hundred years.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPANSION -->
+    <section class="expand" aria-label="Inside the shop">
+      <div class="expand__stage" data-expand-stage>
+        <div class="expand__frame" data-expand-frame>
+          <img src={img('craft-detail.jpg')} alt="Detail work with clippers behind the ear" loading="lazy" />
+        </div>
+        <span class="expand__word" data-expand-word>the detail is the difference</span>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section services" id="menu">
+      <div class="section-head">
+        <h2>The Menu</h2>
+        <span class="label label--dim">02 — Services</span>
+      </div>
+      <div class="menu" data-menu>
+        <div class="menu__preview" data-menu-preview aria-hidden="true">
+          {services.map((s) => (
+            <img src={img(s.preview)} alt="" loading="lazy" data-preview-img />
+          ))}
+        </div>
+        {services.map((s, i) => (
+          <div class="menu__row" data-menu-row data-index={i} data-fade data-cursor>
+            <span class="menu__name">{s.name}</span>
+            <span class="menu__time">{s.time}</span>
+            <span class="menu__price">{s.price}</span>
+          </div>
+        ))}
+      </div>
+      <p class="services__note" data-fade>Cash preferred · Gloucester Gift Card accepted · Walk-ins welcome</p>
+    </section>
+
+    <!-- VOICES -->
+    <section class="section voices" aria-label="What clients say">
+      <div class="section-head">
+        <h2>Word of <span class="serif-i">Mouth</span></h2>
+        <span class="label label--dim">03 — Reviews</span>
+      </div>
+      <div class="voices__track" data-voices-track>
+        {voices.map((v) => (
+          <figure class="voice">
+            <blockquote set:html={`“${v.quote}”`} />
+            <figcaption>{v.source}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+
+    <!-- VISIT -->
+    <section class="section visit" id="visit">
+      <div class="visit__bg" data-visit-bg>
+        <img src={img('chair.jpg')} alt="" loading="lazy" />
+      </div>
+      <div class="visit__inner">
+        <span class="label" data-fade>04 — Find us</span>
+        <h2 class="visit__title" data-fade style="margin-top:1.4rem">
+          No bookings. No fuss. <em>Just walk in.</em>
+        </h2>
+        <p class="visit__history" data-fade>
+          You’ll find us on one of Gloucester’s oldest streets. Hare Lane began as a
+          Saxon <span class="serif-i">here stræt</span> — a military road — first recorded
+          in 1301, and for centuries the main route north out of the city towards
+          Tewkesbury. Next door at No.&nbsp;8 stands one of Gloucester’s black-and-white
+          timber buildings from the early 1500s, and the Cathedral is a couple of
+          minutes’ stroll away. A haircut here puts you on a street that has been
+          trading for a thousand years.
+        </p>
+        <div class="visit__grid">
+          <div class="visit__col" data-fade>
+            <h4>Address</h4>
+            <p>7 Hare Lane</p>
+            <p>Gloucester</p>
+            <p>GL1 2BA</p>
+            <p class="dim" style="margin-top:0.8rem">City centre — a short walk from the Cathedral</p>
+          </div>
+          <div class="visit__col" data-fade>
+            <h4>Hours</h4>
+            <ul class="hours">
+              <li><span>Mon — Sat</span><span>09:00 — 18:00</span></li>
+              <li><span>Sunday</span><span>09:30 — 15:00</span></li>
+            </ul>
+          </div>
+          <div class="visit__col" data-fade>
+            <h4>Contact</h4>
+            <p><a href="tel:+447413183819" data-cursor>07413 183819</a></p>
+            <p class="dim" style="margin-top:0.35rem">Cash preferred · Gift Card accepted</p>
+            <a
+              class="visit__cta"
+              href="https://www.google.com/maps/search/?api=1&query=Sams+Barbers+7+Hare+Lane+Gloucester+GL1+2BA"
+              target="_blank"
+              rel="noopener"
+              data-cursor
+            >Get Directions</a>
+          </div>
+        </div>
+        <div class="visit__map" data-fade>
+          <iframe
+            title="Map — Sam's Barbers, 7 Hare Lane, Gloucester"
+            src="https://maps.google.com/maps?q=Sams%20Barbers%2C%207%20Hare%20Lane%2C%20Gloucester%20GL1%202BA&t=&z=17&ie=UTF8&iwloc=&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__mark" data-fade>Sam’s Barbers</div>
+    <div class="footer__row">
+      <div class="footer__links">
+        <a href="https://www.facebook.com/share/1FCn8CFCex/" target="_blank" rel="noopener" data-cursor>Facebook</a>
+        <a href="https://share.google/eHNTtZd79qLFXXjZK" target="_blank" rel="noopener" data-cursor>Google</a>
+        <a href="tel:+447413183819" data-cursor>07413 183819</a>
+      </div>
+      <p>© 2026 Sam’s Barbers · 7 Hare Lane, Gloucester GL1 2BA · Demo site</p>
+    </div>
+  </footer>
+
+  <script>
+    import '../scripts/main.js';
+  </script>
+</Layout>

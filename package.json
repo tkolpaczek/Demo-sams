@@ -1,0 +1,19 @@
+{
+  "name": "demo-sams",
+  "version": "1.0.0",
+  "description": "Sam's Barbers — cinematic one-page site. Astro + GSAP + ScrollTrigger + Lenis.",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@fontsource/comfortaa": "^5.3.0",
+    "@fontsource/cormorant-garamond": "^5.3.0",
+    "@fontsource/jost": "^5.3.0",
+    "astro": "^5.0.0",
+    "gsap": "^3.12.0",
+    "lenis": "^1.1.0"
+  }
+}
